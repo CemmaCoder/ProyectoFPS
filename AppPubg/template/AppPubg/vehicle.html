@@ -1,0 +1,12 @@
+{% extends "AppPubg/padre.html" %}
+
+{% load static %}
+
+{% block contenido1 %}
+    {% for v in vehicle %}
+        <ul style="list-style-type: none">
+        <h4><li>{{v}}</li></h4>
+        <br>
+        </ul>
+    {% endfor %}
+{% endblock %}

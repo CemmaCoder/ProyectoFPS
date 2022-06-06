@@ -1,0 +1,12 @@
+{% extends "AppPubg/padre.html" %}
+
+{% load static %}
+
+{% block contenido1 %}
+    {% for t in throwable %}
+        <ul style="list-style-type: none">
+        <h4><li>{{t}}</li></h4>
+        <br>
+        </ul>
+    {% endfor %}
+{% endblock %}

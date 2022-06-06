@@ -1,0 +1,12 @@
+{% extends "AppPubg/padre.html" %}
+
+{% load static %}
+
+{% block contenido1 %}
+    {% for e in equipament %}
+        <ul style="list-style-type: none">
+        <h4><li>{{e}}</li></h4>
+        <br>
+        </ul>
+    {% endfor %}
+{% endblock %}

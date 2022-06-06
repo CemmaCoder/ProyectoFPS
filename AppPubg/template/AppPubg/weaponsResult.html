@@ -1,0 +1,18 @@
+{% extends "AppPubg/padre.html" %}
+
+{% load static %}
+
+{% block contenido1 %}
+{% if weapons %}
+<ul style="list-style-type: none">
+    {% for weapon in weapons %}
+        <h3>
+        <li> Nombre: {{weapon.name}} </li>
+        <li> Tipo de balas: {{weapon.bullets}} mm. </li>  
+        <li> Cant. de accesorios: {{weapon.attachment}} </li>  
+        <img src= {{weapon.image}}  >
+        </h3>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

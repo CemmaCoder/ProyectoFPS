@@ -1,0 +1,22 @@
+{% extends "AppPubg/padre.html" %}
+
+{% load static %}
+
+{% block contenido1 %}
+<form action="/AppPubg/weaponResult/" method="GET" class="pb-5 row g-3" >
+    <input type="text" class="form-control" name="weapon" id="weapon" placeholder="- INGRESE EL NOMBRE DEL ARMA -">
+    <input type="submit" value="BUSCAR" class="btn btn-secondary">
+</form>
+    
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+        <span style="color: black">ARMAS</span>
+        </div>
+        <ul class="list-group list-group-flush">
+        {% for w in weapons %}
+        <li class="list-group-item">{{w}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}
