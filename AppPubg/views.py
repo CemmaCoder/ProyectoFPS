@@ -25,7 +25,7 @@ def vehiclesView(request):
     return render(request, "AppPubg/vehicle.html", resultado)
 
 def equipamentView(request):
-    equipament = Equipment.objects.all()
+    equipament = Equipament.objects.all()
     resultado = {"equipament": equipament}
     return render(request, "AppPubg/equipament.html", resultado)
 
@@ -83,4 +83,16 @@ def mapFormView(request):
             return render(request, "AppPubg/inicio.html")
     else:
         miFormulario = mapForm()
-    return render(request, "AppPubg/mapsForm.html", {'miFormulario':miFormulario})
+    return render(request, "AppPubg/mapForm.html", {'miFormulario':miFormulario})
+
+def equipamentFormView(request):
+    if request.method == "POST":
+        miFormulario = equipamentForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            equipament = Equipament(name=informacion['name'], tier=informacion['tier'], armor=informacion['armor'], reducedamage=informacion['reducedamage'])
+            equipament.save
+            return render(request, "AppPubg/inicio.html")
+    else:
+        miFormulario = equipamentForm()
+    return render(request, "AppPubg/equipamentForm.html")

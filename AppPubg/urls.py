@@ -10,7 +10,9 @@ urlpatterns = [
     path("weapons/", weaponsView,name='Armas'),
     path("throwable/", throwableView,name='Arrojables'),
     path("playerForm/", playerFormView,name='JugadorFormulario'),
-    path("vehicleForm/", vehicleFormView,name='VehiculoFormulario'),
     path("mapForm/", mapFormView,name='MapFormulario'),
+    path("vehicleForm/", vehicleFormView,name='VehiculoFormulario'),
+    path("equipamentForm/", equipamentFormView,name='EquipamentoFormulario'),
+
     path("weaponResult/", weaponSearch,name='WeaponResult'),
     ]

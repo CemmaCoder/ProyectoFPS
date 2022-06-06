@@ -6,12 +6,39 @@ class playerForm(forms.Form):
     job = forms.CharField(max_length=20)
     range = forms.CharField(max_length=20)
 
-class vehicleForm(forms.Form):
-    name = forms.CharField(max_length=20)
-    type = forms.CharField(max_length=20)
-    speed = forms.IntegerField()
-
+# ------------------------------------------------------------------------------------------------
 class mapForm(forms.Form):
     name = forms.CharField(max_length=20)
     size = forms.IntegerField()
     rework = forms.BooleanField()
+
+# ------------------------------------------------------------------------------------------------
+class vehicleForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    type = forms.CharField(max_length=20)
+    speed = forms.IntegerField()
+    ocupant = forms.IntegerField()
+    health = forms.IntegerField()
+
+# ------------------------------------------------------------------------------------------------
+class equipamentForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    tier = forms.IntegerField()
+    armor = forms.IntegerField()
+    reducedamage = forms.IntegerField()
+
+# ------------------------------------------------------------------------------------------------
+class weaponForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    bullets = forms.IntegerField()
+    attachment = forms.IntegerField()
+    type = forms.CharField(max_length=20)
+    damage = forms.IntegerField()
+
+# ------------------------------------------------------------------------------------------------
+class throwableForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    damage = forms.IntegerField()
+    weight = forms.IntegerField()
+
+# ------------------------------------------------------------------------------------------------

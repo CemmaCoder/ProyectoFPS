@@ -8,7 +8,9 @@
     {% for weapon in weapons %}
         <h3>
         <li> Nombre: {{weapon.name}} </li>
-        <li> Tipo de balas: {{weapon.bullets}} mm. </li>  
+        <li> Tipo: {{weapon.type}} </li>
+        <li> Calibre: {{weapon.bullets}} mm. </li>  
+        <li> Daño Promedio: {{weapon.damage}} </li>
         <li> Cant. de accesorios: {{weapon.attachment}} </li>  
         <img src= {{weapon.image}}  >
         </h3>
