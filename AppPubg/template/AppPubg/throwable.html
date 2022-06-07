@@ -3,10 +3,16 @@
 {% load static %}
 
 {% block contenido1 %}
-    {% for t in throwable %}
-        <ul style="list-style-type: none">
-        <h4><li>{{t}}</li></h4>
-        <br>
-        </ul>
+<div class="card border-success" style="width: 25rem;">
+    <div class="card-header">
+    <h3>
+    <span style="color: black">ARROJADIZOS</span>
+    </h3>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for throw in throwable %}
+    <li class="list-group-item">{{throw}}</li>
     {% endfor %}
+    </ul>
+</div>
 {% endblock %}

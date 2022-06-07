@@ -13,6 +13,6 @@ urlpatterns = [
     path("mapForm/", mapFormView,name='MapFormulario'),
     path("vehicleForm/", vehicleFormView,name='VehiculoFormulario'),
     path("equipamentForm/", equipamentFormView,name='EquipamentoFormulario'),
-
+    path("throwableForm/", throwableFormView,name='ArrojablesFormulario'),
     path("weaponResult/", weaponSearch,name='WeaponResult'),
     ]

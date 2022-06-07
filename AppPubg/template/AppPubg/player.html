@@ -3,10 +3,21 @@
 {% load static %}
 
 {% block contenido1 %}
-    {% for p in players %}
-        <ul style="list-style-type: none">
-        <h4><li>{{p}}</li></h4>
-        <br>
-        </ul>
+
+<div class="card border-success" style="width: 30rem;">
+    <div class="card-header">
+    <h3>
+    <span style="color: black">JUGADORES</span>
+    </h3>
+    <br>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for player in players %}
+    <a href= {{player.steam}} target="_blank">PERFIL DE STEAM</a>
+    <li class="list-group-item">{{player}}</li>
+    <br>
     {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}

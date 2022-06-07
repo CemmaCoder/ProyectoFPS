@@ -5,9 +5,10 @@ class Player(models.Model):
     email = models.EmailField(max_length=30)
     job = models.CharField(max_length=20)
     range = models.CharField(max_length=20)
+    steam = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f" Jugador: {self.name} - Trabajo: {self.job} - Rango: {self.range}"
+        return f"  Jugador: {self.name} - Trabajo: {self.job} - Rango: {self.range}"
 
 # ------------------------------------------------------------------------------------------------
 
@@ -43,7 +44,7 @@ class Equipament(models.Model):
     image = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f"Equipp: {self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}%"
+        return f"Equipo: {self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}% "
 
 # ------------------------------------------------------------------------------------------------
 

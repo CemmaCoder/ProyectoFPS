@@ -3,7 +3,6 @@ from AppPubg.models import *
 from AppPubg.forms import *
 from django.template import loader
 
-
 def inicioView(request):
     plantilla = loader.get_template("AppPubg/inicio.html")
     documento = plantilla.render()
@@ -95,4 +94,16 @@ def equipamentFormView(request):
             return render(request, "AppPubg/inicio.html")
     else:
         miFormulario = equipamentForm()
-    return render(request, "AppPubg/equipamentForm.html")
+    return render(request, "AppPubg/equipamentForm.html", {'miFormulario':miFormulario})
+
+def throwableFormView(request):
+    if request.method == 'POST':
+        miFormulario = throwableForm(request.POST)
+        if miFormulario.is_valid(): 
+            informacion = miFormulario.cleaned_data
+            throwable = Throwable(name=informacion['name'], damage=informacion['damage'], weight=informacion['weight'])
+            throwable.save()
+            return render(request, "AppPubg/inicio.html")
+    else:
+        miFormulario = throwableForm()
+    return render(request, "AppPubg/throwableForm.html", {'miFormulario':miFormulario})

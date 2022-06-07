@@ -3,10 +3,18 @@
 {% load static %}
 
 {% block contenido1 %}
-    {% for e in equipament %}
-        <ul style="list-style-type: none">
-        <h4><li>{{e}}</li></h4>
-        <br>
-        </ul>
+
+<div class="card border-success" style="width: 40rem;">
+    <div class="card-header">
+    <h3>
+    <span style="color: black">EQUIPO</span>
+    </h3>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for equip in equipament %}
+    <li class="list-group-item">{{equip}}</li>
+    <img src= {{equipament.image}}  >
     {% endfor %}
+    </ul>
+</div>
 {% endblock %}

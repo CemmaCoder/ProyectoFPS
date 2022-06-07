@@ -3,10 +3,16 @@
 {% load static %}
 
 {% block contenido1 %}
+<div class="card border-success" style="width: 35rem;">
+    <div class="card-header">
+    <h3>
+    <span style="color: black">VEHICULOS</span>
+    </h3>
+    </div>
+    <ul class="list-group list-group-flush">
     {% for v in vehicle %}
-        <ul style="list-style-type: none">
-        <h4><li>{{v}}</li></h4>
-        <br>
-        </ul>
+    <li class="list-group-item">{{v}}</li>
     {% endfor %}
+    </ul>
+</div>
 {% endblock %}
