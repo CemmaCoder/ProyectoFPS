@@ -6,11 +6,12 @@
 <div class="card border-success" style="width: 35rem;">
     <div class="card-header">
     <h3>
-    <span style="color: black">VEHICULOS</span>
+    <span style="color: black"><u>VEHICULOS</u></span>
     </h3>
     </div>
     <ul class="list-group list-group-flush">
     {% for v in vehicle %}
+        {{v.name}}
     <li class="list-group-item">{{v}}</li>
     {% endfor %}
     </ul>

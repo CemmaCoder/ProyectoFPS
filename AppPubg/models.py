@@ -32,7 +32,7 @@ class Vehicle(models.Model):
     image = models.CharField(max_length= 255,null=True)
 
     def __str__(self):
-        return f" Vehiculo: {self.name} - Capacidad: {self.ocupant} pasajeros - Velocidad Maxima: {self.speed} Km/h - Vida: {self.health} - Tipo: {self.type}"
+        return f" {self.name} - Capacidad: {self.ocupant} pasajeros - Velocidad Maxima: {self.speed} Km/h - Vida: {self.health} - Tipo: {self.type}"
 
 # ------------------------------------------------------------------------------------------------
 

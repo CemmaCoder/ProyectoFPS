@@ -3,18 +3,17 @@
 {% load static %}
 
 {% block contenido1 %}
-<div class="card border-success" style="width: 20rem;">
-    <div class="card-header ">
-    <h3>
-    <span style="color: black">MAPAS ACTUALES</span>
-    </h3>
-    </div>
-    <ul class="list-group list-group-flush">
+
+<div class="border-success d-flex align-items-center row">
     {% for map in maps %}
-    <a href= {{map.link}} target="_blank">VER MAPA</a>
-    <li class="list-group-item">{{map}}</li>
-    <br>
+    <div class="card m-4 d-flex align-items-center" style="width: 20rem;">
+        <a href= {{map.link}} target="_blank" >
+            <img src={{map.link}} style="object-fit:cover ; height:300px ; width:300px ; " class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+            <p class="card-text" style="color: black">{{map}}</p>
+        </div>
+    </div>
     {% endfor %}
-    </ul>
 </div>
 {% endblock %}

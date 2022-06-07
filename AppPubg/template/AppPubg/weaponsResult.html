@@ -7,19 +7,17 @@
 <ul style="list-style-type: none">
     {% for weapon in weapons %}
     <div class="card border-success" style="width: 20rem;">
-        <img src= {{weapon.image}} class="card-img-top" alt="...">
+        <img src= {{weapon.image}}>
         <div class="card-body text-center">
         <h3 class="card-title">{{weapon.name}}</h3>
-            
             <p class="card-text">
-            <li> Nombre: {{weapon.name}} </li>
-            <li> Tipo: {{weapon.type}} </li>
-            <li> Calibre: {{weapon.bullets}} mm. </li>  
-            <li> Daño Promedio: {{weapon.damage}} </li>
-            <li> Cant. de accesorios: {{weapon.attachment}} </li>  
+            <li> <u>Tipo:</u> {{weapon.type}} </li>
+            <li> <u>Calibre:</u> {{weapon.bullets}} mm. </li>  
+            <li> <u>Daño Promedio:</u> {{weapon.damage}} </li>
+            <li> <u>Cant. de accesorios:</u> {{weapon.attachment}} </li>  
             </p>
             
-        <a href=" {% url 'Armas' %}" class="btn btn-primary">Volver</a>
+        <a href=" {% url 'Armas' %}" class="btn btn-primary"><u>VOLVER</u></a>
         </div>
     </div>
     {% endfor %}
