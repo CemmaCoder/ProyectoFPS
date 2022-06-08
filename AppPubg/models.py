@@ -19,7 +19,7 @@ class Maps(models.Model):
     link = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f" Mapa: {self.name} - Tamaño: {self.size} bloques "
+        return f" {self.name} - Tamaño: {self.size} bloques "
 
 # ------------------------------------------------------------------------------------------------
 
@@ -68,4 +68,4 @@ class Throwable(models.Model):
     image = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f" Tipo: {self.name} - Daño: {self.damage} - Peso: {self.weight} gr. "
+        return f" Nombre: {self.name} - Daño: {self.damage} - Peso: {self.weight} gr. "

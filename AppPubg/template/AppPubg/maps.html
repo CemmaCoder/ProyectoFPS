@@ -4,9 +4,9 @@
 
 {% block contenido1 %}
 
-<div class="border-success d-flex align-items-center row">
+<div class="d-flex align-items-center row">
     {% for map in maps %}
-    <div class="card m-4 d-flex align-items-center" style="width: 20rem;">
+    <div class="card shadow m-4 d-flex align-items-center" style="width: 19rem;">
         <a href= {{map.link}} target="_blank" >
             <img src={{map.link}} style="object-fit:cover ; height:300px ; width:300px ; " class="card-img-top" alt="...">
         </a>

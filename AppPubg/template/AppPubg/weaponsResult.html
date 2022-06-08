@@ -6,11 +6,11 @@
 {% if weapons %}
 <ul style="list-style-type: none">
     {% for weapon in weapons %}
-    <div class="card border-success" style="width: 20rem;">
+    <div class="card border-success" style="width: 20rem; color: black">
         <img src= {{weapon.image}}>
         <div class="card-body text-center">
         <h3 class="card-title">{{weapon.name}}</h3>
-            <p class="card-text">
+            <p class="card-text" >
             <li> <u>Tipo:</u> {{weapon.type}} </li>
             <li> <u>Calibre:</u> {{weapon.bullets}} mm. </li>  
             <li> <u>Daño Promedio:</u> {{weapon.damage}} </li>
