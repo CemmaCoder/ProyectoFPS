@@ -13,9 +13,10 @@
     <br>
     </div>
     <ul class="list-group list-group-flush">
-    {% for p in resultado %}
+    {% for p in response.data %}
         <a href= {{p.profileurl}} target="_blank">PERFIL DE STEAM</a>
         <li class="list-group-item">{{p.personaname}}</li>
+        <img src= {{p.avatarfull}} width="150" height="150">
     <br>
     {% endfor %}
     </ul>

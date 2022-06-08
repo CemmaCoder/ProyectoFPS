@@ -12,11 +12,9 @@ def inicioView(request):
 
 def playerView(request):
     response=requests.get('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=5AADAB72B82745B2203981C0CC93A767&steamids=76561198029714945, 76561198863200608')
-    data = json.loads(response)
-    print(response,data)
-    # players = Player.objects.all()
-    # resultado = {"players": players}
-    return render(request, "AppPubg/player.html", {'response':response})
+    JSONresponse = response.json() 
+    templateResponse = {'data': JSONresponse['response']['players']}     
+    return render(request, "AppPubg/player.html", {"response": templateResponse}) 
 
 def mapsView(request):
     maps = Maps.objects.all()
