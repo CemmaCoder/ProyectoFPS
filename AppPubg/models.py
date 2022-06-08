@@ -8,7 +8,7 @@ class Player(models.Model):
     steam = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f"  Jugador: {self.name} - Trabajo: {self.job} - Rango: {self.range}"
+        return f"  Jugador: {self.name} - Rol: {self.job} - Rango: {self.range}"
 
 # ------------------------------------------------------------------------------------------------
 
@@ -44,7 +44,7 @@ class Equipament(models.Model):
     image = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f"Equipo: {self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}% "
+        return f"{self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}% "
 
 # ------------------------------------------------------------------------------------------------
 
