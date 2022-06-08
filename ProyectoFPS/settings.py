@@ -43,7 +43,7 @@ ROOT_URLCONF = 'ProyectoFPS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/eMMAAA/Desktop/Proyecto Final/ProyectoFPS/AppPubg/template/'],
+        'DIRS': ['D:/PythonClass/PracticosEntregables/Entrega1-LeivaEmmanuel/ProyectoFinal/AppPubg/template/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

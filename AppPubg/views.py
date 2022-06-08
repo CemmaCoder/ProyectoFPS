@@ -129,3 +129,15 @@ def consumableFormView(request):
     else:
         miFormulario = consumableForm()
     return render(request, "AppPubg/consumableForm.html", {'miFormulario':miFormulario})
+
+def weaponFormView(request):
+    if request.method == 'POST':
+        miFormulario = consumableForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            weapon = Weapons(name=informacion['name'],bullets=informacion['bullets'],attachment=informacion['attachment'],type=informacion['type'],damage=informacion['damage'])
+            weapon.save()
+            return render(request, "AppPubg/inicio.html")
+    else:
+        miFormulario = consumableForm()
+    return render(request, "AppPubg/weaponForm.html", {'miFormulario':miFormulario})

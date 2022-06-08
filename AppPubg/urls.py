@@ -16,5 +16,6 @@ urlpatterns = [
     path("equipamentForm/", equipamentFormView,name='EquipamentoFormulario'),
     path("throwableForm/", throwableFormView,name='ArrojablesFormulario'),
     path("consumableForm/", consumableFormView,name='ConsumiblesFormulario'),
+    path("weaponForm/", weaponFormView,name='ArmaFormulario'),
     path("weaponResult/", weaponSearch,name='WeaponResult'),
     ]
