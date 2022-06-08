@@ -13,9 +13,9 @@
     <br>
     </div>
     <ul class="list-group list-group-flush">
-    {% for player in players %}
-    <a href= {{player.steam}} target="_blank">PERFIL DE STEAM</a>
-    <li class="list-group-item">{{player}}</li>
+    {% for p in resultado %}
+        <a href= {{p.profileurl}} target="_blank">PERFIL DE STEAM</a>
+        <li class="list-group-item">{{p.personaname}}</li>
     <br>
     {% endfor %}
     </ul>

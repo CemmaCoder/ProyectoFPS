@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse
 from AppPubg.models import *
 from AppPubg.forms import *
 from django.template import loader
+import requests
+import json
 
 def inicioView(request):
     plantilla = loader.get_template("AppPubg/inicio.html")
@@ -9,9 +11,12 @@ def inicioView(request):
     return HttpResponse(documento)
 
 def playerView(request):
-    players = Player.objects.all()
-    resultado = {"players": players}
-    return render(request, "AppPubg/player.html", resultado)
+    response=requests.get('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=5AADAB72B82745B2203981C0CC93A767&steamids=76561198029714945, 76561198863200608')
+    data = json.loads(response)
+    print(response,data)
+    # players = Player.objects.all()
+    # resultado = {"players": players}
+    return render(request, "AppPubg/player.html", {'response':response})
 
 def mapsView(request):
     maps = Maps.objects.all()
