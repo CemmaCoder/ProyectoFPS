@@ -42,3 +42,10 @@ class throwableForm(forms.Form):
     weight = forms.IntegerField()
 
 # ------------------------------------------------------------------------------------------------
+
+class consumableForm(forms.Form):
+    name = forms.CharField(max_length=20)
+    weight = forms.IntegerField()
+    health = forms.IntegerField()
+    boost = forms.IntegerField()
+    castTime = forms.IntegerField()

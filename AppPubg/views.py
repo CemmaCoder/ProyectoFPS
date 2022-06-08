@@ -48,6 +48,11 @@ def throwableView(request):
     resultado = {"throwable": throwable}
     return render(request, "AppPubg/throwable.html", resultado)
 
+def consumableView(request):
+    consumable = Consumable.objects.all()
+    resultado = {"consumable": consumable}
+    return render(request, "AppPubg/consumable.html", resultado)
+
 def playerFormView(request):
     if request.method == "POST":
         miFormulario = playerForm(request.POST)
@@ -107,3 +112,15 @@ def throwableFormView(request):
     else:
         miFormulario = throwableForm()
     return render(request, "AppPubg/throwableForm.html", {'miFormulario':miFormulario})
+
+def consumableFormView(request):
+    if request.method == 'POST':
+        miFormulario = consumableForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            consumable = Consumable(name=informacion['name'], weight=informacion['weight'], health=informacion['health'],boost=informacion['boost'])
+            consumable.save()
+            return render(request, "AppPubg/inicio.html")
+    else:
+        miFormulario = consumableForm()
+    return render(request, "AppPubg/consumableForm.html", {'miFormulario':miFormulario})

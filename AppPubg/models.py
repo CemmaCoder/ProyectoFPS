@@ -70,3 +70,16 @@ class Throwable(models.Model):
 
     def __str__(self):
         return f" Nombre: {self.name} - Daño: {self.damage} - Peso: {self.weight} gr. "
+
+# ------------------------------------------------------------------------------------------------
+
+class Consumable(models.Model):
+    name = models.CharField(max_length=20)
+    weight = models.IntegerField()
+    health = models.IntegerField()
+    boost = models.IntegerField()
+    castTime = models.IntegerField(null=True)
+    image = models.CharField(max_length=255,null=True)
+
+    def __str__(self):
+        return f" {self.name} - Peso: {self.weight} gr. - Curacion: {self.health}/100 - Aceleracion: {self.boost} instantaneo - Uso: {self.castTime} segundos."
