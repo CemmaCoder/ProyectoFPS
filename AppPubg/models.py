@@ -41,10 +41,11 @@ class Equipament(models.Model):
     tier = models.IntegerField()
     armor = models.IntegerField(null=True)
     reducedamage = models.IntegerField()
+    capacity = models.IntegerField(null=True)
     image = models.CharField(max_length=255,null=True)
 
     def __str__(self):
-        return f"{self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}% "
+        return f"{self.name} - Nivel: {self.tier} Armadura: {self.armor} - Reduccion de daño: {self.reducedamage}% - Capacidad: {self.capacity}"
 
 # ------------------------------------------------------------------------------------------------
 

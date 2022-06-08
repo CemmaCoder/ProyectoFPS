@@ -7,18 +7,15 @@
     <input type="text" class="form-control" name="weapon" id="weapon" placeholder="- INGRESE EL NOMBRE DEL ARMA -">
     <input type="submit" value="BUSCAR" class="btn btn-secondary">
 </form>
-    
-    <div class="card border-success" style="width: 25rem;">
-        <div class="card-header text-center">
-        <h3>
-        <span style="color: black"><u>ARMAS</u></span>
-        </h3>
+<div class="border-success d-flex align-items-center row">
+    {% for weapon in weapons %}
+    <div class="card shadow m-4 d-flex align-items-center" style="width: 20rem;">
+            <img src={{weapon.image}} style="object-fit:cover ; height:145px ; width:320px ; " class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+            <p class="card-text" style="color: black">{{weapon}}</p>
         </div>
-        <ul class="list-group list-group-flush">
-        {% for w in weapons %}
-        <li class="list-group-item">{{w}}</li>
-        {% endfor %}
-        </ul>
     </div>
-    
+    {% endfor %}
+</div>
 {% endblock %}
