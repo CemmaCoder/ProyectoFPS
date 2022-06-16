@@ -1,7 +1,7 @@
+from django.template import loader
 from django.shortcuts import render, HttpResponse
 from AppPubg.models import *
 from AppPubg.forms import *
-from django.template import loader
 import requests
 
 def inicioView(request):
