@@ -1,14 +1,20 @@
+import requests
+from AppPubg.forms import *
+from AppPubg.models import *
 from django.template import loader
 from django.shortcuts import render, HttpResponse
-from AppPubg.models import *
-from AppPubg.forms import *
-import requests
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
+# ----------------------------
 def inicioView(request):
     plantilla = loader.get_template("AppPubg/inicio.html")
     documento = plantilla.render()
     return HttpResponse(documento)
 
+# ----------------------------
 def playerView(request):
     # players = Player.objects.all()
     # resultado = {"players": players}
@@ -18,26 +24,31 @@ def playerView(request):
     templateResponse = {'data': JSONresponse['response']['players']}     
     return render(request, 'AppPubg/player.html', {"response": templateResponse})
 
+# ----------------------------
 def mapsView(request):
     maps = Maps.objects.all()
     resultado = {"maps": maps} 
     return render(request, "AppPubg/maps.html", resultado)
 
+# ----------------------------
 def vehiclesView(request):
     vehicle = Vehicle.objects.all()
     resultado = {"vehicle": vehicle}
     return render(request, "AppPubg/vehicle.html", resultado)
 
+# ----------------------------
 def equipamentView(request):
     equipament = Equipament.objects.all()
     resultado = {"equipament": equipament}
     return render(request, "AppPubg/equipament.html", resultado)
 
+# ----------------------------
 def weaponsView(request):
     weapons = Weapons.objects.all()
     resultado = {"weapons": weapons}
     return render(request, "AppPubg/weapons.html", resultado)
 
+# ----------------------------
 def weaponSearch(request):
     if request.GET['weapon']:
         weapon = request.GET['weapon']
@@ -47,17 +58,19 @@ def weaponSearch(request):
         respuesta= f"No hay resultados"
     return HttpResponse(respuesta)
 
-
+# ----------------------------
 def throwableView(request):
     throwable = Throwable.objects.all()
     resultado = {"throwable": throwable}
     return render(request, "AppPubg/throwable.html", resultado)
 
+# ----------------------------
 def consumableView(request):
     consumable = Consumable.objects.all()
     resultado = {"consumable": consumable}
     return render(request, "AppPubg/consumable.html", resultado)
 
+# ----------------------------
 def playerFormView(request):
     if request.method == "POST":
         miFormulario = playerForm(request.POST)
@@ -70,6 +83,7 @@ def playerFormView(request):
         miFormulario = playerForm()
     return render(request, "AppPubg/playerForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def vehicleFormView(request):
     if request.method == "POST":
         miFormulario = vehicleForm(request.POST)
@@ -82,6 +96,7 @@ def vehicleFormView(request):
         miFormulario = vehicleForm()
     return render(request, "AppPubg/vehicleForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def mapFormView(request):
     if request.method == "POST":
         miFormulario = mapForm(request.POST)
@@ -94,6 +109,7 @@ def mapFormView(request):
         miFormulario = mapForm()
     return render(request, "AppPubg/mapForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def equipamentFormView(request):
     if request.method == "POST":
         miFormulario = equipamentForm(request.POST)
@@ -106,6 +122,7 @@ def equipamentFormView(request):
         miFormulario = equipamentForm()
     return render(request, "AppPubg/equipamentForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def throwableFormView(request):
     if request.method == 'POST':
         miFormulario = throwableForm(request.POST)
@@ -118,6 +135,7 @@ def throwableFormView(request):
         miFormulario = throwableForm()
     return render(request, "AppPubg/throwableForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def consumableFormView(request):
     if request.method == 'POST':
         miFormulario = consumableForm(request.POST)
@@ -130,6 +148,7 @@ def consumableFormView(request):
         miFormulario = consumableForm()
     return render(request, "AppPubg/consumableForm.html", {'miFormulario':miFormulario})
 
+# ----------------------------
 def weaponFormView(request):
     if request.method == 'POST':
         miFormulario = consumableForm(request.POST)
@@ -141,3 +160,38 @@ def weaponFormView(request):
     else:
         miFormulario = consumableForm()
     return render(request, "AppPubg/weaponForm.html", {'miFormulario':miFormulario})
+
+# ----------------------------
+#REGISTER
+def register_request(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, 'AppPubg/inicio.html', {"mensaje": f' El usuario {username} se ha creado safisfactoriamente'})
+        else:
+            return render(request, 'AppPubg/inicio.html', {"mensaje": 'Error, no se pudo crear el usuario'})
+    else:
+        form = UserRegisterForm()
+        return render(request, 'AppPubg/register.html', {'form': form})
+
+# ----------------------------
+# LOGIN
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contraseña = form.cleaned_data.get('password')
+            user = authenticate(username=usuario, password=contraseña)
+            if user is not None:
+                login(request, user)
+                return render(request, "AppPubg/inicio.html", {"mensaje": f' Bienvenido {usuario}'})
+            else:
+                return render(request, "AppPubg/inicio.html", {"mensaje": f' El usuario no existe o la contraseña es invalida'})
+        else:
+            return render(request, "AppPubg/inicio.html", {"mensaje": 'Error formulario erroneo'})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'AppPubg/login.html', {'form':form})
